@@ -1,0 +1,74 @@
+<!--components/tableView/table-view.wxml-->
+<wxs module="m1">
+  var getSectionText = function(arr, section) {
+    if (!arr) {
+       return '';
+    }
+
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i][0] == section) {
+        return arr[i][1];
+      }
+    }
+
+    return '';
+  }
+
+  var getRowInSection = function(arr, section) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i][0] == section) {
+        var newArr = [];
+
+        for (var j = 0; j < arr[i][1]; j++) {
+          newArr.push(j);
+        }
+
+        return newArr;
+      }
+    }
+
+    return [];
+  }
+
+  var getCellData = function(arr, section, row) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i][0] == section && arr[i][1] == row) {
+        return arr[i][2];
+      }
+    }
+
+    return null;
+  }
+
+  var getRowHeight = function(arr, section, row) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i][0] == section && arr[i][1] == row) {
+        return arr[i][2];
+      }
+    }
+
+    return 44;
+  }
+
+  module.exports = {
+    getRowInSection: getRowInSection,
+    getCellData: getCellData,
+    getRowHeight: getRowHeight,
+    getSectionText: getSectionText
+  };
+</wxs>
+
+<scroll-view scroll-y="true" wx:if="{{numberOfRowsInSection && cellForRowAtIndexPath}}">
+  <block wx:for="{{numberOfSections}}" wx:for-index="section" wx:key="">
+    <view class='section_view'>
+      <view class='header_view' wx:if="{{m1.getSectionText(titleForHeaderInSection, section)}}">{{m1.getSectionText(titleForHeaderInSection, section)}}</view>
+      <block wx:for="{{m1.getRowInSection(numberOfRowsInSection, section)}}" wx:for-index="row" wx:key="">
+        <table-view-cell data-section="{{section}}" data-row="{{row}}" image-src="{{m1.getCellData(cellForRowAtIndexPath, section, row)['imageSrc']}}" text="{{m1.getCellData(cellForRowAtIndexPath, section, row)['text']}}" detail-text="{{m1.getCellData(cellForRowAtIndexPath, section, row)['detailText']}}" cell-style="{{m1.getCellData(cellForRowAtIndexPath, section, row)['cellStyle']}}" indicate="{{m1.getCellData(cellForRowAtIndexPath, section, row)['indicate']}}" height="{{m1.getRowHeight(heightForRowAtIndexPath, section, row)}}" bindtap="onCellTap" bindlongpress="onCellLongPress">
+        </table-view-cell>
+      </block>
+    </view>
+    <view class='footer_view' wx:if="{{m1.getSectionText(titleForFooterInSection, section)}}">{{m1.getSectionText(titleForFooterInSection, section)}}</view>
+  </block>
+</scroll-view>
+<view wx:elif="{{cellForRowAtIndexPath}}">请为 table-view 提供 numberOfRowsInSection 属性，格式为：[[Section, Row], [...]]，如[[0, 5], [1, 6]]表示第1节为5行，第2节为6行。</view>
+<view wx:else>请为 table-view 提供 cellForRowAtIndexPath 属性，格式如：[[Section, Row, {imageSrc: "xxx", text: "xxx", detailText: "xxx", indicate: "xxx", cellStyle: "xxx"}], [...]]。</view>

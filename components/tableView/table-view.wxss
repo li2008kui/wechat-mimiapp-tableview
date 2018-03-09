@@ -1,0 +1,15 @@
+scroll-view {
+  background-color: #f1f1f1;
+  padding-bottom: 20px;
+}
+
+.section_view {
+  margin-top: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header_view, .footer_view {
+  padding: 5px 24rpx;
+  font-size: 13px;
+  color: #565656;
+}

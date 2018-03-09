@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "table-view-cell": "/components/tableViewCell/table-view-cell"
+  }
+}

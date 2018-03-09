@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "table-view 自定义组件",
+  "usingComponents": {
+    "table-view": "/components/tableView/table-view"
+  }
+}

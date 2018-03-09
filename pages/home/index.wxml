@@ -1,0 +1,1 @@
+<table-view numberOfSections="4" numberOfRowsInSection="{{section_rows}}" heightForRowAtIndexPath="{{row_heights}}" titleForHeaderInSection="{{section_headers}}" titleForFooterInSection="{{section_footers}}" cellForRowAtIndexPath="{{data_sources}}" bindcelltap='tapCell' bindcelllongpress="longPressCell"></table-view>

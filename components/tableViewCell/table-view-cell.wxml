@@ -1,0 +1,11 @@
+<!--components/tableViewCell/table-view-cell.wxml-->
+<view class='table_view_cell {{cell_selecte_status}} {{cellStyle}}' style='height: {{height}}px;' bindtouchstart='touchCell' bindtouchend='recoverCell' bindtouchmove='recoverCell' bindtouchcancel='recoverCell'>
+  <view class='content_view'>
+    <image class='main_image' src='{{imageSrc}}' wx:if="{{imageSrc}}" />
+    <view style='width: {{imageSrc && indicate ? 602 : (imageSrc ? 634 : (indicate ? 670 : 702))}}rpx;'>
+      <label class='text_label'>{{text}}</label>
+      <label class='detail_text_label'>{{detailText}}</label>
+    </view>
+  </view>
+  <image class='indicate_icon' src='/images/icon_indicate.png' wx:if="{{indicate}}" />
+</view>
