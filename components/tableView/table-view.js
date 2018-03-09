@@ -23,7 +23,7 @@ Component({
   properties: {
     // 分区数量
     numberOfSections: Number,
-    // 第Section个分区有多少行，必须该属性，格式如：[[Section, Row]]
+    // 第Section个分区有多少行，必须该属性，格式如：[[Section, Row], [...]]
     numberOfRowsInSection: Object,
     // 某行的数据，必须该属性，格式如：[[Section, Row, {imageSrc: "xxx", text: "xxx", detailText: "xxx", indicate: "xxx", cellStyle: "xxx"}], [...]]
     cellForRowAtIndexPath: {
@@ -36,25 +36,31 @@ Component({
         }
       }
     },
-    // 第Section个分区有头部标题，格式如：[[Section, "xxx"]]
+    // 第Section个分区有头部标题，格式如：[[Section, "xxx"], [...]]
     titleForHeaderInSection: {
       type: Object,
       value: []
     },
-    // 第Section个分区有底部标题，格式如：[[Section, "xxx"]]
+    // 第Section个分区有底部标题，格式如：[[Section, "xxx"], [...]]
     titleForFooterInSection: {
       type: Object,
       value: []
     },
-    // 某一行的高度，单位px
+    // 某一行的高度，单位px，格式如：[[Section, Row, xxx], [...]]
     heightForRowAtIndexPath: {
       type: Object,
       value: []
     },
-    // 第Section分区头部的高度，单位px
-    heightForHeaderInSection: Number,
-    // 第Section分区尾部的高度，单位px
-    heightForFooterInSection: Number
+    // 第Section分区头部的高度，单位px，格式如：[[Section, xxx], [...]]
+    heightForHeaderInSection: {
+      type: Object,
+      value: []
+    },
+    // 第Section分区尾部的高度，单位px，格式如：[[Section, xxx], [...]]
+    heightForFooterInSection: {
+      type: Object,
+      value: []
+    }
   },
 
   /**
